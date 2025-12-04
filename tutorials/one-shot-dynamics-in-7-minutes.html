@@ -1,0 +1,988 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>One-Shot Dynamics in 7 Minutes &#8212; osdr  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/autoclasstoc.css?v=08871587" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/one-shot-dynamics-in-7-minutes';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Defining Cell-Division Labels" href="defining-cell-divisions.html" />
+    <link rel="prev" title="Tutorials" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">osdr  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JonathanSomer/osdr" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/jonathan_somer_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jonathansomer.github.io/" title="Website" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-globe fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Website</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JonathanSomer/osdr" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/jonathan_somer_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jonathansomer.github.io/" title="Website" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-globe fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Website</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">One-Shot Dynamics in 7 Minutes</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="defining-cell-divisions.html">Defining Cell-Division Labels</a></li>
+
+
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tissue-dataset-model.html">How an Analysis is implemented</a></li>
+
+
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Tutorials</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">One-Shot Dynamics in 7 Minutes</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="One-Shot-Dynamics-in-7-Minutes">
+<h1>One-Shot Dynamics in 7 Minutes<a class="headerlink" href="#One-Shot-Dynamics-in-7-Minutes" title="Link to this heading">#</a></h1>
+<section id="Welcome!">
+<h2>Welcome!<a class="headerlink" href="#Welcome!" title="Link to this heading">#</a></h2>
+<p>This tutorial will take you through a complete <em>One-Shot Tissue Dynamics Reconstruction</em> (OSDR) workflow by reproducing figure 3 from <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2024.04.22.590503v1">Somer et. al 2024</a>. We will download a dataset, estimate a dynamical model and plot a 2D phase-portrait of fibroblast-macropahge dynamics.</p>
+<p>Before we begin, let’s download the dataset we’ll use throughout the tutorial by running the following code block.</p>
+<p>This could take a few minutes the first time so continue reading while the data is downloading.</p>
+<p>We’ll work with the breast cancer IMC dataset by <a class="reference external" href="https://www.nature.com/articles/s41588-022-01041-y">Danenberg et. al 2022</a>. This dataset includes 793 spatial proteomics tissue sections from 717 breast cancer patients, totalling ~864K cells.</p>
+<p>Fibroblast-macrophage dynamics in breast cancer serve as a useful test-case for our model because <a class="reference external" href="https://www.nature.com/articles/s41467-023-41518-w">Mayer et. al 2023</a> experimentally discovered the dynamics between these two cell types.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tdm.raw.breast_mibi</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_single_cell_df</span>
+
+<span class="n">single_cell_df</span> <span class="o">=</span> <span class="n">read_single_cell_df</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">single_cell_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(859710, 61)
+</pre></div></div>
+</div>
+</section>
+<section id="Overview-of-OSDR">
+<h2>Overview of OSDR<a class="headerlink" href="#Overview-of-OSDR" title="Link to this heading">#</a></h2>
+<p>OSDR uses statistical models to learn how the composition of a cell’s neighborhood influences it’s division rate.</p>
+<p>Thus, the core input to OSDR consists of:</p>
+<ul class="simple">
+<li><p>x,y positions of cells in the tissue</p></li>
+<li><p>cell types</p></li>
+<li><p>cell division labels (1 = dividing, 0 = not dividing)</p></li>
+</ul>
+<p>For datasets including samples from multiple patients or multiple tissue sections (“images”) per patient, we also require:</p>
+<ul class="simple">
+<li><p>subject id</p></li>
+<li><p>image id</p></li>
+</ul>
+</section>
+<section id="The-Single-Cell-Dataframe">
+<h2>The Single-Cell Dataframe<a class="headerlink" href="#The-Single-Cell-Dataframe" title="Link to this heading">#</a></h2>
+<p>To use OSDR we first prepare one large table with a row for each cell and a column for each parameter above.</p>
+<p>We call this table the “single-cell dataframe”.</p>
+<p>The module <code class="docutils literal notranslate"><span class="pre">tdm.preprocess.single_cell_df</span></code> contains utilities for preparing and validating the table.</p>
+<p>The raw data we downloaded includes many columns, including levels of various markers:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">single_cell_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;index&#39;,
+ &#39;ImageNumber&#39;,
+ &#39;ObjectNumber&#39;,
+ &#39;metabric_id&#39;,
+ &#39;cellPhenotype&#39;,
+ &#39;is_epithelial&#39;,
+ &#39;is_tumour&#39;,
+ &#39;is_normal&#39;,
+ &#39;is_dcis&#39;,
+ &#39;is_interface&#39;,
+ &#39;is_perivascular&#39;,
+ &#39;is_hotAggregate&#39;,
+ &#39;Histone H3&#39;,
+ &#39;SMA&#39;,
+ &#39;CK5&#39;,
+ &#39;CD38&#39;,
+ &#39;HLA-DR&#39;,
+ &#39;CK8-18&#39;,
+ &#39;CD15&#39;,
+ &#39;FSP1&#39;,
+ &#39;CD163&#39;,
+ &#39;ICOS&#39;,
+ &#39;OX40&#39;,
+ &#39;CD68&#39;,
+ &#39;HER2 (3B5)&#39;,
+ &#39;CD3&#39;,
+ &#39;Podoplanin&#39;,
+ &#39;CD11c&#39;,
+ &#39;PD-1&#39;,
+ &#39;GITR&#39;,
+ &#39;CD16&#39;,
+ &#39;HER2 (D8F12)&#39;,
+ &#39;CD45RA&#39;,
+ &#39;B2M&#39;,
+ &#39;CD45RO&#39;,
+ &#39;FOXP3&#39;,
+ &#39;CD20&#39;,
+ &#39;ER&#39;,
+ &#39;CD8&#39;,
+ &#39;CD57&#39;,
+ &#39;Ki-67&#39;,
+ &#39;PDGFRB&#39;,
+ &#39;Caveolin-1&#39;,
+ &#39;CD4&#39;,
+ &#39;CD31-vWF&#39;,
+ &#39;CXCL12&#39;,
+ &#39;HLA-ABC&#39;,
+ &#39;panCK&#39;,
+ &#39;c-Caspase3&#39;,
+ &#39;DNA1&#39;,
+ &#39;DNA2&#39;,
+ &#39;Location_Center_X&#39;,
+ &#39;Location_Center_Y&#39;,
+ &#39;AreaShape_Area&#39;,
+ &#39;x&#39;,
+ &#39;y&#39;,
+ &#39;ki67&#39;,
+ &#39;cell_type&#39;,
+ &#39;img_id&#39;,
+ &#39;subject_id&#39;,
+ &#39;division&#39;]
+</pre></div></div>
+</div>
+<p>We can use the function <code class="docutils literal notranslate"><span class="pre">restrict_df_to_required_columns</span></code> to select just the subset of columns OSDR requires.</p>
+<p>A preprocessed table looks like this:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tdm.preprocess.single_cell_df</span><span class="w"> </span><span class="kn">import</span> <span class="n">restrict_df_to_required_columns</span>
+
+<span class="n">restrict_df_to_required_columns</span><span class="p">(</span><span class="n">single_cell_df</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+      <th>division</th>
+      <th>cell_type</th>
+      <th>img_id</th>
+      <th>subject_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.000121</td>
+      <td>0.000004</td>
+      <td>False</td>
+      <td>Tu</td>
+      <td>1</td>
+      <td>MB-0282</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.000222</td>
+      <td>0.000005</td>
+      <td>False</td>
+      <td>T</td>
+      <td>1</td>
+      <td>MB-0282</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.000354</td>
+      <td>0.000006</td>
+      <td>False</td>
+      <td>Tu</td>
+      <td>1</td>
+      <td>MB-0282</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>There are <code class="docutils literal notranslate"><span class="pre">x,y</span></code> coordinates in meters. For example, the y value of the first cell, <code class="docutils literal notranslate"><span class="pre">0.000004</span></code>, corresponds with 4 microns. There is a boolean label for cell division, a string for the cell_type (e.g <code class="docutils literal notranslate"><span class="pre">Tu</span></code> for tumor cells, <code class="docutils literal notranslate"><span class="pre">T</span></code> for T-cells) and unique identifiers for images and subjects.</p>
+<p>We can check the dataframe was processed correctly using <code class="docutils literal notranslate"><span class="pre">check_single_cell_df</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tdm.preprocess.single_cell_df</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_single_cell_df</span>
+
+<span class="k">assert</span> <span class="n">check_single_cell_df</span><span class="p">(</span><span class="n">single_cell_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-blue-intense-fg">Validating single cell dataframe...
+
+</span><span class="ansi-green-intense-fg">[SUCCESS] Found x column
+</span><span class="ansi-green-intense-fg">[SUCCESS] Found y column
+</span><span class="ansi-green-intense-fg">[SUCCESS] Found cell_type column. </span><span class="ansi-green-intense-fg">Number of cell types: 6
+</span><span class="ansi-green-intense-fg">     Cell types: [&#39;Tu&#39;, &#39;T&#39;, &#39;En&#39;, &#39;F&#39;, &#39;M&#39;, &#39;B&#39;]
+</span><span class="ansi-green-intense-fg">[SUCCESS] Found division column. Fraction of dividing cells: 0.016
+</span><span class="ansi-green-intense-fg">[SUCCESS] Found img_id column. Number of images found: 791
+</span><span class="ansi-green-intense-fg">[SUCCESS] Found subject_id column. Number of subjects found: 715
+</span><span class="ansi-green-intense-fg">
+[SUCCESS] Validation complete!</span>
+</pre></div></div>
+</div>
+<p><strong>Note:</strong></p>
+<p>In order to apply OSDR to your own dataset the only requirement is preparing a single-cell dataframe with the columns: <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">division,</span> <span class="pre">cell_type,</span> <span class="pre">img_id,</span> <span class="pre">subject_id</span></code></p>
+</section>
+<section id="The-Analysis-Object">
+<h2>The Analysis Object<a class="headerlink" href="#The-Analysis-Object" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Analysis</span></code> class is the primary entity in the <code class="docutils literal notranslate"><span class="pre">tdm</span></code> package.</p>
+<p>To see it in action, we will reproduce the dynamics between fibroblasts and macrophages from the paper by (<a class="reference external" href="https://www.biorxiv.org/content/10.1101/2024.04.22.590503v1">Somer et. al 2024</a>)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tdm.cell_types</span><span class="w"> </span><span class="kn">import</span> <span class="n">FIBROBLAST</span><span class="p">,</span> <span class="n">MACROPHAGE</span><span class="p">,</span> <span class="n">TUMOR</span><span class="p">,</span> <span class="n">ENDOTHELIAL</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tdm.analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">Analysis</span>
+
+<span class="n">ana</span> <span class="o">=</span> <span class="n">Analysis</span><span class="p">(</span>
+    <span class="n">single_cell_df</span><span class="o">=</span><span class="n">single_cell_df</span><span class="p">,</span>
+    <span class="n">cell_types_to_model</span><span class="o">=</span><span class="p">[</span><span class="n">FIBROBLAST</span><span class="p">,</span> <span class="n">MACROPHAGE</span><span class="p">],</span>
+    <span class="n">allowed_neighbor_types</span><span class="o">=</span><span class="p">[</span><span class="n">FIBROBLAST</span><span class="p">,</span> <span class="n">MACROPHAGE</span><span class="p">,</span> <span class="n">TUMOR</span><span class="p">,</span> <span class="n">ENDOTHELIAL</span><span class="p">],</span>
+    <span class="n">polynomial_dataset_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;degree&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
+    <span class="n">neighborhood_mode</span><span class="o">=</span><span class="s1">&#39;extrapolate&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-blue-intense-fg">1/5 Constructing tissues </span><span class="ansi-green-intense-fg">[V]
+</span><span class="ansi-blue-intense-fg">2/5 Counting cell-neighbors </span><span class="ansi-green-intense-fg">[V]
+</span><span class="ansi-blue-intense-fg">3/5 Filtering cell-types </span><span class="ansi-green-intense-fg">[V]
+</span><span class="ansi-blue-intense-fg">4/5 Transforming features </span><span class="ansi-green-intense-fg">[V]
+</span><span class="ansi-blue-intense-fg">5/5 Fitting a model </span><span class="ansi-green-intense-fg">[V]</span>
+</pre></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Analysis</span></code> object above counted the neighbors of each cell, transformed features and fit statistical models.</p>
+<section id="Analysis-Arguments,-step-by-step">
+<h3>Analysis Arguments, step by step<a class="headerlink" href="#Analysis-Arguments,-step-by-step" title="Link to this heading">#</a></h3>
+<p>The single-cell dataframe we prepared is the primary input to the analysis object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Don&#39;t run this block:</span>
+<span class="n">ana</span> <span class="o">=</span> <span class="n">Analysis</span><span class="p">(</span>
+    <span class="n">single_cell_df</span><span class="o">=</span><span class="n">single_cell_df</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>We also specify the cell types we wish to model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Don&#39;t run this block:</span>
+<span class="n">ana</span> <span class="o">=</span> <span class="n">Analysis</span><span class="p">(</span>
+    <span class="o">...</span>
+    <span class="n">cell_types_to_model</span><span class="o">=</span><span class="p">[</span><span class="n">FIBROBLAST</span><span class="p">,</span> <span class="n">MACROPHAGE</span><span class="p">],</span> <span class="c1"># F, M</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Providing <code class="docutils literal notranslate"><span class="pre">cell_types_to_model=[FIBROBLAST,</span> <span class="pre">MACROPHAGE]</span></code> implies the following dynamical model:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dF}{dt} = f(F,M)\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{dM}{dt} = m(F,M)\]</div>
+<p>This model neglects other cell types that might possibly influence dynamics, such as adaptive immune cells.</p>
+<p>To simplify dynamics, we only include fibroblasts and macrophages from neighborhoods without adaptive immune cells:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Don&#39;t run this block:</span>
+<span class="n">ana</span> <span class="o">=</span> <span class="n">Analysis</span><span class="p">(</span>
+    <span class="o">...</span>
+    <span class="n">allowed_neighbor_types</span><span class="o">=</span><span class="p">[</span><span class="n">FIBROBLAST</span><span class="p">,</span> <span class="n">MACROPHAGE</span><span class="p">,</span> <span class="n">TUMOR</span><span class="p">,</span> <span class="n">ENDOTHELIAL</span><span class="p">],</span> <span class="c1"># no T or B cells</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The OSDR dynamical model is based on statistical models that estimate the proliferation rate of each cell type. For example, the dynamics of fibroblasts are given by the following equation:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dF}{dt} = F\cdot (p_F^+(F,M) - p_F^-(F,M))\]</div>
+<p>Where <span class="math notranslate nohighlight">\(p_F^+,p_F^-\)</span> are statistical models that map the density of fibroblasts and macrophages to fibroblast division or death rates.</p>
+<p>By default, <span class="math notranslate nohighlight">\(p^+\)</span> is implemented as a logistic-regression model.</p>
+<p>Logistic regression fits a linear model in order to estimate probabilities. The connection between features <span class="math notranslate nohighlight">\(x\)</span>, parameters <span class="math notranslate nohighlight">\(\beta\)</span> and the predicted probability <span class="math notranslate nohighlight">\(p\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\log( p / (1-p)) = x^T \beta\]</div>
+<p>In our case, the features <span class="math notranslate nohighlight">\(x\)</span> will be second order interaction terms of fibroblasts and macrophage counts:</p>
+<div class="math notranslate nohighlight">
+\[x^T \beta = \beta_0 + \beta_1 F + \beta_2 M  + \beta_3  F^2 +  \beta_4 FM  + \beta_5  M^2\]</div>
+<p>The following arguments produce second order interactions as such:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Don&#39;t run this block:</span>
+<span class="n">ana</span> <span class="o">=</span> <span class="n">Analysis</span><span class="p">(</span>
+    <span class="o">...</span>
+    <span class="n">polynomial_dataset_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;degree&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span> <span class="c1"># 2 is also the default degree, so this argument isn&#39;t required</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="Plotting-a-phase-portrait">
+<h2>Plotting a phase-portrait<a class="headerlink" href="#Plotting-a-phase-portrait" title="Link to this heading">#</a></h2>
+<p>To plot a phase portrait (or any plot for that matter) we pass the analysis object to the corresponding plotting function:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tdm.plot.two_cells.phase_portrait</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_phase_portrait</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plot_phase_portrait</span><span class="p">(</span><span class="n">ana</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># required for rendering from terminal</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_one-shot-dynamics-in-7-minutes_18_0.png" src="../_images/tutorials_one-shot-dynamics-in-7-minutes_18_0.png" />
+</div>
+</div>
+</section>
+<section id="Tip:-Cache-the-analysis-for-faster-loading">
+<h2>Tip: Cache the analysis for faster loading<a class="headerlink" href="#Tip:-Cache-the-analysis-for-faster-loading" title="Link to this heading">#</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ana</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="s1">&#39;fm.pkl&#39;</span><span class="p">)</span> <span class="c1"># caches the analysis</span>
+<span class="n">loaded_ana</span> <span class="o">=</span> <span class="n">Analysis</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;fm.pkl&#39;</span><span class="p">)</span> <span class="c1"># loads the cached analysis</span>
+<span class="n">plot_phase_portrait</span><span class="p">(</span><span class="n">loaded_ana</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># required for rendering from terminal</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_one-shot-dynamics-in-7-minutes_20_0.png" src="../_images/tutorials_one-shot-dynamics-in-7-minutes_20_0.png" />
+</div>
+</div>
+</section>
+<section id="Summary:">
+<h2>Summary:<a class="headerlink" href="#Summary:" title="Link to this heading">#</a></h2>
+<p>Overall, the complete OSDR workflow amounts to:</p>
+<ol class="arabic simple">
+<li><p>preparing a single-cell table with columns <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">division,</span> <span class="pre">cell_type,</span> <span class="pre">img_id,</span> <span class="pre">subject_id</span></code></p></li>
+<li><p>fitting an <code class="docutils literal notranslate"><span class="pre">Analysis</span></code> object</p></li>
+<li><p>passing the analysis object to a plotting function</p></li>
+</ol>
+<p>The 3 stages are summed up in the following code block:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tdm.raw.breast_mibi</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_single_cell_df</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tdm.cell_types</span><span class="w"> </span><span class="kn">import</span> <span class="n">FIBROBLAST</span><span class="p">,</span> <span class="n">MACROPHAGE</span><span class="p">,</span> <span class="n">TUMOR</span><span class="p">,</span> <span class="n">ENDOTHELIAL</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tdm.analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">Analysis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tdm.plot.two_cells.phase_portrait</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_phase_portrait</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># 1.</span>
+<span class="n">single_cell_df</span> <span class="o">=</span> <span class="n">read_single_cell_df</span><span class="p">()</span>
+
+<span class="c1"># 2.</span>
+<span class="n">ana</span> <span class="o">=</span> <span class="n">Analysis</span><span class="p">(</span>
+    <span class="n">single_cell_df</span><span class="o">=</span><span class="n">single_cell_df</span><span class="p">,</span>
+    <span class="n">cell_types_to_model</span><span class="o">=</span><span class="p">[</span><span class="n">FIBROBLAST</span><span class="p">,</span> <span class="n">MACROPHAGE</span><span class="p">],</span>
+    <span class="n">allowed_neighbor_types</span><span class="o">=</span><span class="p">[</span><span class="n">FIBROBLAST</span><span class="p">,</span> <span class="n">MACROPHAGE</span><span class="p">,</span> <span class="n">TUMOR</span><span class="p">,</span> <span class="n">ENDOTHELIAL</span><span class="p">],</span>
+    <span class="n">polynomial_dataset_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;degree&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
+    <span class="n">neighborhood_mode</span><span class="o">=</span><span class="s1">&#39;extrapolate&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># 3.</span>
+<span class="n">plot_phase_portrait</span><span class="p">(</span><span class="n">ana</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># required for rendering from terminal</span>
+</pre></div>
+</div>
+<p>Some final technical notes:</p>
+<ol class="arabic simple">
+<li><p>In practice, because quality death markers are lacking, we estimate death rate as a constant based on the mean division rate, see the paper by <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2024.04.22.590503v1">Somer et. al 2024</a>.</p></li>
+<li><p>To increase sample size, we perform the following trick: instead of excluding cells whose neighborhoods intersect tissue limits, we <code class="docutils literal notranslate"><span class="pre">'extrapolate'</span></code> their neighborhood by scaling values according to the fraction of the neighborhood that’s observed. For example, if a cell has one macrophage neighbor, and we see just half of the cell’s neighborhood, we’ll scale the macrophage count by 2.</p></li>
+<li><p>In some cases, we find that the dynamics estimated as <span class="math notranslate nohighlight">\(\frac{dX}{dt} = \frac{\text{divisions}}{dt} - \frac{\text{deaths}}{dt}\)</span> produce a net growth of a cell population towards infinite density. We assume there cannot be positive growth at the maximal observed density, and apply the minimal correction required to keep the dynamics confined to the range of observed densities. To apply this correction, add <code class="docutils literal notranslate"><span class="pre">enforce_max_density=True</span></code> and set the power using
+<code class="docutils literal notranslate"><span class="pre">max_density_enforcer_power</span> <span class="pre">=</span> <span class="pre">8</span></code>. For more details on the choice of power see the supplementary in the paper.</p></li>
+</ol>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorials</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="defining-cell-divisions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Defining Cell-Division Labels</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Welcome!">Welcome!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Overview-of-OSDR">Overview of OSDR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#The-Single-Cell-Dataframe">The Single-Cell Dataframe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#The-Analysis-Object">The Analysis Object</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Analysis-Arguments,-step-by-step">Analysis Arguments, step by step</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Plotting-a-phase-portrait">Plotting a phase-portrait</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Tip:-Cache-the-analysis-for-faster-loading">Tip: Cache the analysis for faster loading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Summary:">Summary:</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tutorials/one-shot-dynamics-in-7-minutes.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Jonathan Somer.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

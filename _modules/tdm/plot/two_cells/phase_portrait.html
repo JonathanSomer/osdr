@@ -1,0 +1,1175 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tdm.plot.two_cells.phase_portrait &#8212; osdr  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/autoclasstoc.css?v=08871587" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=d2d258e8" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/tdm/plot/two_cells/phase_portrait';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">osdr  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../getting_started.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../tutorials/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JonathanSomer/osdr" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/jonathan_somer_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jonathansomer.github.io/" title="Website" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-globe fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Website</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../getting_started.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../tutorials/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JonathanSomer/osdr" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/jonathan_somer_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jonathansomer.github.io/" title="Website" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-globe fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Website</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">tdm.plot.two_cells.phase_portrait</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for tdm.plot.two_cells.phase_portrait</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Literal</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.figure</span><span class="w"> </span><span class="kn">import</span> <span class="n">Figure</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.axes_grid1</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_axes_locatable</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.cm</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mcolors</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics.pairwise</span><span class="w"> </span><span class="kn">import</span> <span class="n">rbf_kernel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tdm.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">log2_1p</span><span class="p">,</span> <span class="n">inv_log2_1p</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tdm.cell_types</span><span class="w"> </span><span class="kn">import</span> <span class="n">CELL_TYPE_TO_COLOR</span><span class="p">,</span> <span class="n">CELL_TYPE_TO_FULL_NAME</span><span class="p">,</span> <span class="n">FIBROBLAST_COLOR</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tdm.analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">Analysis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tdm.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">NeighborsDataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tdm.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tdm.style</span><span class="w"> </span><span class="kn">import</span> <span class="n">STABILITIY_TYPE_TO_MARKER_STYLE_KWARGS</span><span class="p">,</span> <span class="n">STABLE</span><span class="p">,</span> <span class="n">SEMI_STABLE</span><span class="p">,</span> <span class="n">UNSTABLE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tdm.plot.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_density_axis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tdm.numerical.phase_portrait_analysis</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">get_nullclines</span><span class="p">,</span>
+    <span class="n">compute_change_in_each_direction</span><span class="p">,</span>
+    <span class="n">get_classified_fixed_points_inbounds</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">tdm.simulate.deterministic</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_trajectory</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_bla</span><span class="p">():</span>
+
+    <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="plot_phase_portrait">
+<a class="viewcode-back" href="../../../../api/generated/tdm.plot.two_cells.phase_portrait.plot_phase_portrait.html#tdm.plot.two_cells.phase_portrait.plot_phase_portrait">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_phase_portrait</span><span class="p">(</span>
+    <span class="n">ana</span><span class="p">:</span> <span class="n">Analysis</span><span class="p">,</span>
+    <span class="n">plot_nullclines</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">cell_a</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">cell_b</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">fixed_cell_counts</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">phase_portrait_style</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;stream&quot;</span><span class="p">,</span> <span class="s2">&quot;quiver&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;stream&quot;</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;cells&quot;</span><span class="p">,</span> <span class="s2">&quot;rates&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;cells&quot;</span><span class="p">,</span>
+    <span class="n">streamplot_density</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">nullcline_width</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">xlim</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ylim</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">step</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.35</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">nds_for_kdeplot</span><span class="p">:</span> <span class="n">NeighborsDataset</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">streamplot_color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">add_fixed_points</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot a 2D phase-portrait with nullclines and fixed-points.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ana (Analysis): _description_</span>
+<span class="sd">        plot_nullclines (bool, optional): _description_. Defaults to True.</span>
+<span class="sd">        fixed_cell_counts (dict[str, float] | None, optional): _description_. Defaults to None.</span>
+<span class="sd">        phase_portrait_style (Literal[&amp;quot;stream&amp;quot;, &amp;quot;quiver&amp;quot;], optional): _description_.</span>
+<span class="sd">            Defaults to &quot;stream&quot;.</span>
+<span class="sd">        mode (Literal[&amp;quot;cells&amp;quot;, &amp;quot;rates&amp;quot;], optional): _description_. Defaults to &quot;cells&quot;.</span>
+<span class="sd">        streamplot_density (float, optional): _description_. Defaults to 0.6.</span>
+<span class="sd">        nullcline_width (float, optional): _description_. Defaults to 1.5.</span>
+<span class="sd">        xlim (tuple[float, float] | None, optional): _description_. Defaults to None.</span>
+<span class="sd">        ylim (tuple[float, float] | None, optional): _description_. Defaults to None.</span>
+<span class="sd">        ax (plt.Axes | None, optional): _description_. Defaults to None.</span>
+<span class="sd">        nds_for_kdeplot (NeighborsDataset | None, optional): _description_. Defaults to None.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from tdm.analysis import Analysis</span>
+<span class="sd">        &gt;&gt;&gt; from tdm.plot.two_cells.phase_portrait import plot_phase_portrait</span>
+<span class="sd">        &gt;&gt;&gt; ana = Analysis.load(&quot;fm.pkl&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; plot_phase_portrait(ana)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ana</span><span class="o">.</span><span class="n">model</span>
+    <span class="n">cell_a</span> <span class="o">=</span> <span class="n">cell_a</span> <span class="ow">or</span> <span class="n">ana</span><span class="o">.</span><span class="n">cell_a</span>
+    <span class="n">cell_b</span> <span class="o">=</span> <span class="n">cell_b</span> <span class="ow">or</span> <span class="n">ana</span><span class="o">.</span><span class="n">cell_b</span>
+    <span class="n">xlim</span> <span class="o">=</span> <span class="n">xlim</span> <span class="ow">or</span> <span class="n">ana</span><span class="o">.</span><span class="n">xlim</span>
+    <span class="n">ylim</span> <span class="o">=</span> <span class="n">ylim</span> <span class="ow">or</span> <span class="n">ana</span><span class="o">.</span><span class="n">ylim</span>
+
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+    <span class="n">_plot_phase_portrait</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+        <span class="n">cell_a</span><span class="o">=</span><span class="n">cell_a</span><span class="p">,</span>
+        <span class="n">cell_b</span><span class="o">=</span><span class="n">cell_b</span><span class="p">,</span>
+        <span class="n">xlim</span><span class="o">=</span><span class="n">xlim</span><span class="p">,</span>
+        <span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">fixed_cell_counts</span><span class="o">=</span><span class="n">fixed_cell_counts</span><span class="p">,</span>
+        <span class="n">style</span><span class="o">=</span><span class="n">phase_portrait_style</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+        <span class="n">streamplot_density</span><span class="o">=</span><span class="n">streamplot_density</span><span class="p">,</span>
+        <span class="n">streamplot_color</span><span class="o">=</span><span class="n">streamplot_color</span><span class="p">,</span>
+        <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">plot_nullclines</span><span class="p">:</span>
+        <span class="n">_plot_nullclines</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+            <span class="n">cell_a</span><span class="o">=</span><span class="n">cell_a</span><span class="p">,</span>
+            <span class="n">cell_b</span><span class="o">=</span><span class="n">cell_b</span><span class="p">,</span>
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+            <span class="n">xlim</span><span class="o">=</span><span class="n">xlim</span><span class="p">,</span>
+            <span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span><span class="p">,</span>
+            <span class="n">fixed_cell_counts</span><span class="o">=</span><span class="n">fixed_cell_counts</span><span class="p">,</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="n">nullcline_width</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">nds_for_kdeplot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plot_two_cell_density</span><span class="p">(</span><span class="n">nds</span><span class="o">=</span><span class="n">nds_for_kdeplot</span><span class="p">,</span> <span class="n">cell_a</span><span class="o">=</span><span class="n">cell_a</span><span class="p">,</span> <span class="n">cell_b</span><span class="o">=</span><span class="n">cell_b</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">add_fixed_points</span><span class="p">:</span>
+        <span class="n">plot_fixed_points</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">cell_a</span><span class="o">=</span><span class="n">cell_a</span><span class="p">,</span> <span class="n">cell_b</span><span class="o">=</span><span class="n">cell_b</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span><span class="p">,</span> <span class="n">fixed_cell_counts</span><span class="o">=</span><span class="n">fixed_cell_counts</span>
+        <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">*</span><span class="n">xlim</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">*</span><span class="n">ylim</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Phase Portrait&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="plot_growth_rate">
+<a class="viewcode-back" href="../../../../api/generated/tdm.plot.two_cells.phase_portrait.plot_growth_rate.html#tdm.plot.two_cells.phase_portrait.plot_growth_rate">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_growth_rate</span><span class="p">(</span>
+    <span class="n">ana</span><span class="p">:</span> <span class="n">Analysis</span><span class="p">,</span>
+    <span class="n">kde_bw</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">cell_a_rbf_gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.2</span><span class="p">,</span>  <span class="c1"># value for F in FM analysis</span>
+    <span class="n">cell_b_rbf_gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>  <span class="c1"># value for M in FM analysis</span>
+    <span class="n">xlim</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ylim</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">fixed_cell_counts</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">include_titles</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">plot_nullclines</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">streamplot_density</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">_plot_contours</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Display the growth rate of both cell-types over the phase-plane.</span>
+<span class="sd">        Plots 3 axes: growth rate for each cell-type and a phase-portrait.</span>
+
+<span class="sd">    Hint:</span>
+<span class="sd">        **How to interpret these plots?**</span>
+
+<span class="sd">        The growth rate is computed by taking a smoothed mean of the binary cell-division events over the phase-plane.</span>
+<span class="sd">        We then subtract the mean division rate so that areas with high proliferation are positive (plotted red)</span>
+<span class="sd">        and areas with low proliferation are negative (plotted blue).</span>
+<span class="sd">        See `paper &lt;https://www.biorxiv.org/content/10.1101/2024.04.22.590503v1&gt;`_ for more on why the mean division</span>
+<span class="sd">        rate is a good approximation of the death rate.</span>
+
+<span class="sd">        For ``cell_a`` (x axis), regions with positive growth (red) correspond with flow to the right on the</span>
+<span class="sd">        phase-portrait, and regions with negative growth (blue) correspond with flow to the left.</span>
+<span class="sd">        For ``cell_b`` (y axis), positive and negative growth correspond with flow up or down respectively.</span>
+
+<span class="sd">        Thus, this plot connects the measured division events directly with the modeled dynamics.</span>
+
+
+<span class="sd">    Args:</span>
+<span class="sd">        ana (Analysis): _description_</span>
+<span class="sd">        kde_bw (float, optional): _description_. Defaults to 0.3.</span>
+<span class="sd">        cell_a_rbf_gamma (float, optional): _description_. Defaults to 1.2.</span>
+<span class="sd">        ylim (tuple[float, float] | None, optional): _description_. Defaults to None.</span>
+<span class="sd">        fixed_cell_counts (dict[str, float] | None, optional): _description_. Defaults to None.</span>
+<span class="sd">        include_titles (bool, optional): _description_. Defaults to True.</span>
+<span class="sd">        plot_nullclines (bool, optional): _description_. Defaults to True.</span>
+<span class="sd">        streamplot_density (float, optional): _description_. Defaults to 0.6.</span>
+<span class="sd">        _plot_contours (bool, optional): _description_. Defaults to True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Figure: _description_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ana</span><span class="o">.</span><span class="n">model</span>
+    <span class="n">nds</span> <span class="o">=</span> <span class="n">ana</span><span class="o">.</span><span class="n">rnds</span>
+    <span class="n">cell_a</span> <span class="o">=</span> <span class="n">ana</span><span class="o">.</span><span class="n">cell_a</span>
+    <span class="n">cell_b</span> <span class="o">=</span> <span class="n">ana</span><span class="o">.</span><span class="n">cell_b</span>
+    <span class="n">xlim</span> <span class="o">=</span> <span class="n">xlim</span> <span class="ow">or</span> <span class="n">ana</span><span class="o">.</span><span class="n">xlim</span>
+    <span class="n">ylim</span> <span class="o">=</span> <span class="n">ylim</span> <span class="ow">or</span> <span class="n">ana</span><span class="o">.</span><span class="n">ylim</span>
+
+    <span class="n">fixed_cell_counts</span> <span class="o">=</span> <span class="n">fixed_cell_counts</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">axs</span>
+
+    <span class="n">nbrs_a</span><span class="p">,</span> <span class="n">obs_a</span> <span class="o">=</span> <span class="n">nds</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">cell_a</span><span class="p">)</span>
+    <span class="n">nbrs_b</span><span class="p">,</span> <span class="n">obs_b</span> <span class="o">=</span> <span class="n">nds</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">cell_b</span><span class="p">)</span>
+    <span class="n">nbrs_a</span><span class="p">,</span> <span class="n">nbrs_b</span> <span class="o">=</span> <span class="n">log2_1p</span><span class="p">(</span><span class="n">nbrs_a</span><span class="p">),</span> <span class="n">log2_1p</span><span class="p">(</span><span class="n">nbrs_b</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">*</span><span class="n">xlim</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">*</span><span class="n">ylim</span><span class="p">)</span>
+
+    <span class="c1"># ax1 - cell a kde plot:</span>
+    <span class="n">_plot_growth_rate_axis</span><span class="p">(</span>
+        <span class="n">nbrs_a</span><span class="p">,</span>
+        <span class="n">obs_a</span><span class="p">,</span>
+        <span class="n">cell_a</span><span class="p">,</span>
+        <span class="n">cell_b</span><span class="p">,</span>
+        <span class="n">kde_bw</span><span class="o">=</span><span class="n">kde_bw</span><span class="p">,</span>
+        <span class="n">rbf_gamma</span><span class="o">=</span><span class="n">cell_a_rbf_gamma</span><span class="p">,</span>  <span class="c1"># 0.1 for restricted dataset, 1.2 for fibroblast macrophage analysis</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span>
+        <span class="n">_plot_contours</span><span class="o">=</span><span class="n">_plot_contours</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">CELL_TYPE_TO_FULL_NAME</span><span class="p">[</span><span class="n">cell_a</span><span class="p">]</span><span class="si">}</span><span class="s2"> growth Rate&quot;</span><span class="p">)</span>
+
+    <span class="c1"># ax2 - cell b kde plot:</span>
+    <span class="n">_plot_growth_rate_axis</span><span class="p">(</span>
+        <span class="n">nbrs_b</span><span class="p">,</span>
+        <span class="n">obs_b</span><span class="p">,</span>
+        <span class="n">cell_a</span><span class="p">,</span>
+        <span class="n">cell_b</span><span class="p">,</span>
+        <span class="n">kde_bw</span><span class="o">=</span><span class="n">kde_bw</span><span class="p">,</span>
+        <span class="n">rbf_gamma</span><span class="o">=</span><span class="n">cell_b_rbf_gamma</span><span class="p">,</span>  <span class="c1"># 0.8 for restricted dataset</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
+        <span class="n">_plot_contours</span><span class="o">=</span><span class="n">_plot_contours</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">CELL_TYPE_TO_FULL_NAME</span><span class="p">[</span><span class="n">cell_b</span><span class="p">]</span><span class="si">}</span><span class="s2"> growth Rate&quot;</span><span class="p">)</span>
+
+    <span class="c1"># ax0 - two-cell Phase Portrait</span>
+    <span class="n">plot_phase_portrait</span><span class="p">(</span>
+        <span class="n">ana</span><span class="p">,</span>
+        <span class="n">streamplot_density</span><span class="o">=</span><span class="n">streamplot_density</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">,</span>
+        <span class="n">fixed_cell_counts</span><span class="o">=</span><span class="n">fixed_cell_counts</span><span class="p">,</span>
+        <span class="n">plot_nullclines</span><span class="o">=</span><span class="n">plot_nullclines</span><span class="p">,</span>
+        <span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># plot nullclines over all axes:</span>
+    <span class="k">if</span> <span class="n">plot_nullclines</span><span class="p">:</span>
+        <span class="n">_plot_nullclines</span><span class="p">(</span>
+            <span class="n">model</span><span class="p">,</span>
+            <span class="n">cell_a</span><span class="p">,</span>
+            <span class="n">cell_b</span><span class="p">,</span>
+            <span class="n">ax0</span><span class="p">,</span>
+            <span class="n">xlim</span><span class="p">,</span>
+            <span class="n">ylim</span><span class="p">,</span>
+            <span class="n">fixed_cell_counts</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">_plot_nullclines</span><span class="p">(</span>
+            <span class="n">model</span><span class="p">,</span>
+            <span class="n">cell_a</span><span class="p">,</span>
+            <span class="n">cell_b</span><span class="p">,</span>
+            <span class="n">ax1</span><span class="p">,</span>
+            <span class="n">xlim</span><span class="p">,</span>
+            <span class="n">ylim</span><span class="p">,</span>
+            <span class="n">fixed_cell_counts</span><span class="p">,</span>
+            <span class="n">plot_b</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">_plot_nullclines</span><span class="p">(</span>
+            <span class="n">model</span><span class="p">,</span>
+            <span class="n">cell_a</span><span class="p">,</span>
+            <span class="n">cell_b</span><span class="p">,</span>
+            <span class="n">ax2</span><span class="p">,</span>
+            <span class="n">xlim</span><span class="p">,</span>
+            <span class="n">ylim</span><span class="p">,</span>
+            <span class="n">fixed_cell_counts</span><span class="p">,</span>
+            <span class="n">plot_a</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">plot_fixed_points</span><span class="p">(</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">cell_a</span><span class="p">,</span>
+        <span class="n">cell_b</span><span class="p">,</span>
+        <span class="n">ax0</span><span class="p">,</span>
+        <span class="n">xlim</span><span class="p">,</span>
+        <span class="n">ylim</span><span class="p">,</span>
+        <span class="n">fixed_cell_counts</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># plot_fixed_points(model, cell_a, cell_b, ax0)</span>
+    <span class="n">_add_fixed_point_legend</span><span class="p">(</span><span class="n">ax0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">include_titles</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">fig</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_trajectory</span><span class="p">(</span>
+    <span class="n">ana</span><span class="p">:</span> <span class="n">Analysis</span><span class="p">,</span>
+    <span class="n">state0</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">odeint_timepoints</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">arrow_timepoint_idxs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+    <span class="n">color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;#3B76BC&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">zorder</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+<span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="n">initial_cell_counts</span> <span class="o">=</span> <span class="n">inv_log2_1p</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">state0</span><span class="p">))</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">compute_trajectory</span><span class="p">(</span><span class="n">ana</span><span class="p">,</span> <span class="n">initial_cell_counts</span><span class="o">=</span><span class="n">initial_cell_counts</span><span class="p">,</span> <span class="n">odeint_timepoints</span><span class="o">=</span><span class="n">odeint_timepoints</span><span class="p">)</span>
+
+    <span class="c1"># we log-transform for plotting:</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">log2_1p</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+    <span class="n">x_vals</span> <span class="o">=</span> <span class="n">sol</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">y_vals</span> <span class="o">=</span> <span class="n">sol</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># plot trajectory line:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+
+    <span class="c1"># add arrows to accentuate direction of trajectory:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arrow_timepoint_idxs</span><span class="p">:</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="n">x_vals</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="n">y_vals</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span>
+            <span class="n">x_vals</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+            <span class="n">y_vals</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+            <span class="n">dx</span><span class="p">,</span>
+            <span class="n">dy</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="s2">&quot;full&quot;</span><span class="p">,</span>
+            <span class="n">lw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+            <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">head_width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+            <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">,</span>
+            <span class="n">edgecolor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">clip_on</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_tissues_over_phase_portrait</span><span class="p">(</span>
+    <span class="n">ana</span><span class="p">:</span> <span class="n">Analysis</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="n">plot_phase_portrait</span><span class="p">(</span>
+        <span class="n">ana</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">streamplot_color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;rates&quot;</span><span class="p">,</span>
+        <span class="n">plot_nullclines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+        <span class="n">log2_1p</span><span class="p">(</span><span class="n">ana</span><span class="o">.</span><span class="n">tissue_states</span><span class="p">()),</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">ana</span><span class="o">.</span><span class="n">cell_a</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">ana</span><span class="o">.</span><span class="n">cell_b</span><span class="p">,</span>
+        <span class="n">c</span><span class="o">=</span><span class="n">FIBROBLAST_COLOR</span><span class="p">,</span>
+        <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="n">zorder</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Internal plotting functions:</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_plot_phase_portrait</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span>
+    <span class="n">cell_a</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">cell_b</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">xlim</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">ylim</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
+    <span class="n">fixed_cell_counts</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">style</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;stream&quot;</span><span class="p">,</span> <span class="s2">&quot;quiver&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;stream&quot;</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;cells&quot;</span><span class="p">,</span> <span class="s2">&quot;rates&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;cells&quot;</span><span class="p">,</span>
+    <span class="n">max_density</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">streamplot_density</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">streamplot_linewidth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">streamplot_color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">quiver_arrow_scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">step</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.35</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model (Model): _description_</span>
+<span class="sd">        cell_a (str): _description_</span>
+<span class="sd">        cell_b (str): _description_</span>
+<span class="sd">        xlim (tuple[float, float]): _description_</span>
+<span class="sd">        ylim (tuple[float, float]): _description_</span>
+<span class="sd">        ax (plt): _description_</span>
+<span class="sd">        fixed_cell_counts (dict[str, float] | None, optional): _description_. Defaults to None.</span>
+<span class="sd">        style (Literal[&amp;quot;stream&amp;quot;, &amp;quot;quiver&amp;quot;], optional): _description_. Defaults to &quot;stream&quot;.</span>
+<span class="sd">        mode (Literal[&amp;quot;cells&amp;quot;, &amp;quot;rates&amp;quot;], optional): _description_. Defaults to &quot;cells&quot;.</span>
+<span class="sd">        max_density (int | dict | None, optional): maximal density of cells (untransformed count). Defaults to None.</span>
+<span class="sd">        streamplot_density (float, optional): _description_. Defaults to 0.6.</span>
+<span class="sd">        streamplot_linewidth (float, optional): _description_. Defaults to 1.0.</span>
+<span class="sd">        streamplot_color (str, optional): _description_. Defaults to &quot;black&quot;.</span>
+<span class="sd">        quiver_arrow_scale (float | None, optional): _description_. Defaults to None.</span>
+<span class="sd">        step (float, optional): _description_. Defaults to 0.35.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: _description_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># x,y,u,v is typical streamplot naming for meshgrid locations x,y and</span>
+    <span class="c1"># rates of change in x and y directions u and v respectively</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">compute_change_in_each_direction</span><span class="p">(</span>
+        <span class="n">model</span><span class="p">,</span> <span class="n">cell_a</span><span class="p">,</span> <span class="n">cell_b</span><span class="p">,</span> <span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span><span class="p">,</span> <span class="n">fixed_cell_counts</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">style</span> <span class="o">==</span> <span class="s2">&quot;stream&quot;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span>
+            <span class="n">x</span><span class="p">,</span>
+            <span class="n">y</span><span class="p">,</span>
+            <span class="n">u</span><span class="p">,</span>
+            <span class="n">v</span><span class="p">,</span>
+            <span class="n">broken_streamlines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">streamplot_color</span><span class="p">,</span>
+            <span class="n">density</span><span class="o">=</span><span class="n">streamplot_density</span><span class="p">,</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="n">streamplot_linewidth</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">style</span> <span class="o">==</span> <span class="s2">&quot;quiver&quot;</span><span class="p">:</span>
+        <span class="c1"># plot arrows beginning within max density:</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">max_density</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">abs_x</span> <span class="o">=</span> <span class="n">inv_log2_1p</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+            <span class="n">abs_y</span> <span class="o">=</span> <span class="n">inv_log2_1p</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">max_density</span><span class="p">):</span>
+                <span class="n">alpha</span> <span class="o">=</span> <span class="n">abs_x</span> <span class="o">+</span> <span class="n">abs_y</span> <span class="o">&lt;=</span> <span class="n">max_density</span>
+
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">max_density</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="n">alpha</span> <span class="o">=</span> <span class="p">(</span><span class="n">abs_x</span> <span class="o">&lt;=</span> <span class="n">max_density</span><span class="p">[</span><span class="n">cell_a</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">abs_y</span> <span class="o">&lt;=</span> <span class="n">max_density</span><span class="p">[</span><span class="n">cell_b</span><span class="p">])</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span>
+            <span class="n">x</span><span class="p">,</span>
+            <span class="n">y</span><span class="p">,</span>
+            <span class="n">u</span><span class="p">,</span>
+            <span class="n">v</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">streamplot_color</span><span class="p">,</span>
+            <span class="n">angles</span><span class="o">=</span><span class="s2">&quot;uv&quot;</span><span class="p">,</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span>
+            <span class="n">scale</span><span class="o">=</span><span class="n">quiver_arrow_scale</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">style</span><span class="si">}</span><span class="s2"> is not a valid phase portrait mode&quot;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Phase-Portrait&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">log_density_axis</span><span class="p">(</span><span class="n">cell_a</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">log_density_axis</span><span class="p">(</span><span class="n">cell_b</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">*</span><span class="n">xlim</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">*</span><span class="n">ylim</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_plot_nullclines</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span>
+    <span class="n">cell_a</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">cell_b</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
+    <span class="n">xlim</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">ylim</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">fixed_cell_counts</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">plot_a</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">plot_b</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">a_mesh</span><span class="p">,</span> <span class="n">b_mesh</span><span class="p">,</span> <span class="n">dadt</span><span class="p">,</span> <span class="n">dbdt</span> <span class="o">=</span> <span class="n">compute_change_in_each_direction</span><span class="p">(</span>
+        <span class="n">model</span><span class="p">,</span> <span class="n">cell_a</span><span class="p">,</span> <span class="n">cell_b</span><span class="p">,</span> <span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span><span class="p">,</span> <span class="n">fixed_cell_counts</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span>
+    <span class="p">)</span>
+
+    <span class="n">a_nullclines</span><span class="p">,</span> <span class="n">b_nullclines</span> <span class="o">=</span> <span class="n">get_nullclines</span><span class="p">(</span><span class="n">a_mesh</span><span class="p">,</span> <span class="n">b_mesh</span><span class="p">,</span> <span class="n">dadt</span><span class="p">,</span> <span class="n">dbdt</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">plot_a</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">a_nullclines</span><span class="o">.</span><span class="n">geoms</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">xy</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">CELL_TYPE_TO_COLOR</span><span class="p">[</span><span class="n">cell_a</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">plot_b</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">b_nullclines</span><span class="o">.</span><span class="n">geoms</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">xy</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">CELL_TYPE_TO_COLOR</span><span class="p">[</span><span class="n">cell_b</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_two_cell_density</span><span class="p">(</span>
+    <span class="n">nds</span><span class="p">:</span> <span class="n">NeighborsDataset</span><span class="p">,</span>
+    <span class="n">cell_a</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">cell_b</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">kde_bw</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">fraction_outlined</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">nbrs_a</span><span class="p">,</span> <span class="n">nbrs_b</span> <span class="o">=</span> <span class="n">nds</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">cell_a</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nds</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">cell_b</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">nbrs</span> <span class="o">=</span> <span class="n">log2_1p</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">nbrs_a</span><span class="p">,</span> <span class="n">nbrs_b</span><span class="p">])</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">nbrs</span><span class="p">[</span><span class="n">cell_a</span><span class="p">],</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">nbrs</span><span class="p">[</span><span class="n">cell_b</span><span class="p">],</span>
+        <span class="n">bw_method</span><span class="o">=</span><span class="n">kde_bw</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span> <span class="o">-</span> <span class="n">fraction_outlined</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#F0F0F0&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">zorder</span><span class="o">=-</span><span class="mi">100</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_fixed_points</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span>
+    <span class="n">cell_a</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">cell_b</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
+    <span class="n">xlim</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">ylim</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">fixed_cell_counts</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">fixed_points_dict</span> <span class="o">=</span> <span class="n">get_classified_fixed_points_inbounds</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">cell_a</span><span class="p">,</span> <span class="n">cell_b</span><span class="p">,</span> <span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span><span class="p">,</span> <span class="n">fixed_cell_counts</span><span class="p">)</span>
+    <span class="n">_plot_fixed_points</span><span class="p">(</span><span class="n">fixed_points_dict</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_plot_fixed_points</span><span class="p">(</span>
+    <span class="n">fixed_points</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="k">for</span> <span class="n">stability_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;stable&quot;</span><span class="p">,</span> <span class="s2">&quot;semi-stable&quot;</span><span class="p">,</span> <span class="s2">&quot;unstable&quot;</span><span class="p">]:</span>
+        <span class="n">ps</span> <span class="o">=</span> <span class="n">fixed_points</span><span class="p">[</span><span class="n">stability_type</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">ps</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                <span class="n">x</span><span class="p">,</span>
+                <span class="n">y</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">STABILITIY_TYPE_TO_MARKER_STYLE_KWARGS</span><span class="p">[</span><span class="n">stability_type</span><span class="p">],</span>  <span class="c1"># type: ignore</span>
+                <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="n">clip_on</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+            <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_plot_growth_rate_axis</span><span class="p">(</span>
+    <span class="n">nbrs</span><span class="p">,</span>
+    <span class="n">obs</span><span class="p">,</span>
+    <span class="n">cell_a</span><span class="p">,</span>
+    <span class="n">cell_b</span><span class="p">,</span>
+    <span class="n">kde_bw</span><span class="p">,</span>
+    <span class="n">rbf_gamma</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">return_densest_point</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">obs_type</span><span class="o">=</span><span class="s2">&quot;division&quot;</span><span class="p">,</span>
+    <span class="n">_plot_contours</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">log_density_axis</span><span class="p">(</span><span class="n">cell_a</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">log_density_axis</span><span class="p">(</span><span class="n">cell_b</span><span class="p">))</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot empirical growth density</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># to keep runtimes reasonable - subsample to 30K cells:</span>
+    <span class="n">max_cells</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">30e3</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max_cells</span><span class="p">:</span>
+        <span class="n">nbrs</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">max_cells</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">obs</span> <span class="o">=</span> <span class="n">obs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">nbrs</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+        <span class="n">nbrs</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">obs</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">rbf_kernel</span><span class="p">(</span><span class="n">nbrs</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">rbf_gamma</span><span class="p">)</span>
+    <span class="n">division_density</span> <span class="o">=</span> <span class="n">weights</span> <span class="o">@</span> <span class="n">obs</span><span class="p">[</span><span class="n">obs_type</span><span class="p">]</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">division_density_minus_death</span> <span class="o">=</span> <span class="n">division_density</span> <span class="o">-</span> <span class="n">obs</span><span class="p">[</span><span class="n">obs_type</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="c1"># set colormap - red &quot;hot&quot; = division &gt; death, blue &quot;cold&quot; = death &gt; division</span>
+    <span class="n">vcenter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">([</span><span class="n">division_density_minus_death</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">division_density_minus_death</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span>
+    <span class="n">normalize</span> <span class="o">=</span> <span class="n">mcolors</span><span class="o">.</span><span class="n">TwoSlopeNorm</span><span class="p">(</span><span class="n">vcenter</span><span class="o">=</span><span class="n">vcenter</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span> <span class="o">-</span> <span class="n">eps</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
+    <span class="n">colormap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">)</span>
+
+    <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">nbrs</span><span class="p">[</span><span class="n">cell_a</span><span class="p">],</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">nbrs</span><span class="p">[</span><span class="n">cell_b</span><span class="p">],</span>
+        <span class="n">c</span><span class="o">=</span><span class="n">division_density_minus_death</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="n">colormap</span><span class="p">,</span>
+        <span class="n">norm</span><span class="o">=</span><span class="n">normalize</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># add colorbar:</span>
+    <span class="n">sm</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="n">normalize</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">colormap</span><span class="p">)</span>
+    <span class="n">sm</span><span class="o">.</span><span class="n">set_array</span><span class="p">([])</span>
+    <span class="n">divider</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">cax</span> <span class="o">=</span> <span class="n">divider</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;3%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">([</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vcenter</span><span class="p">,</span> <span class="n">vmax</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;fraction (Ki67 &gt; threshold) - mean&quot;</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot empirical cell distribution</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">_plot_contours</span><span class="p">:</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">nbrs</span><span class="p">[</span><span class="n">cell_a</span><span class="p">],</span>
+            <span class="n">y</span><span class="o">=</span><span class="n">nbrs</span><span class="p">[</span><span class="n">cell_b</span><span class="p">],</span>
+            <span class="n">bw_method</span><span class="o">=</span><span class="n">kde_bw</span><span class="p">,</span>
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+            <span class="n">levels</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+            <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+            <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span>
+            <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="c1"># remove right and top limits</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_add_fixed_point_legend</span><span class="p">(</span><span class="n">ax</span><span class="p">):</span>
+    <span class="n">divider</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">cax</span> <span class="o">=</span> <span class="n">divider</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;5%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">cax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+
+    <span class="c1"># stable point:</span>
+    <span class="n">cax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="o">**</span><span class="n">STABILITIY_TYPE_TO_MARKER_STYLE_KWARGS</span><span class="p">[</span><span class="n">STABLE</span><span class="p">],</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">clip_on</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># semi-stable</span>
+    <span class="n">cax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="p">[</span><span class="mf">0.5</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="o">**</span><span class="n">STABILITIY_TYPE_TO_MARKER_STYLE_KWARGS</span><span class="p">[</span><span class="n">SEMI_STABLE</span><span class="p">],</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">clip_on</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># unstable:</span>
+    <span class="n">cax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="o">**</span><span class="n">STABILITIY_TYPE_TO_MARKER_STYLE_KWARGS</span><span class="p">[</span><span class="n">UNSTABLE</span><span class="p">],</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">clip_on</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">annotations</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="n">STABLE</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">)),</span>
+        <span class="p">(</span><span class="n">SEMI_STABLE</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">)),</span>
+        <span class="p">(</span><span class="n">UNSTABLE</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">)),</span>
+    <span class="p">]</span>
+
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">cax</span>
+
+    <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">offset</span> <span class="ow">in</span> <span class="n">annotations</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+            <span class="n">label</span><span class="p">,</span>
+            <span class="n">xy</span><span class="o">=</span><span class="n">point</span><span class="p">,</span>
+            <span class="n">xytext</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span>
+            <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Remove the ticks and tick labels for both axes</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
+
+    <span class="c1"># Remove the axis labels</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Remove the grid lines</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Remove the frame around the plot</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Jonathan Somer.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
